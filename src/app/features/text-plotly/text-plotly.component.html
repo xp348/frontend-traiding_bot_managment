@@ -1,2 +1,17 @@
-<p>text-plotly works!</p>
-<div id="tester" style="width: 600px; height: 250px"></div>
+<app-line-chart
+  [key]="'1'"
+  [size]="1000"
+  [title]="titleLine"
+  [graphics]="graphicsLine"
+></app-line-chart>
+<app-line-chart
+  [key]="'2'"
+  [size]="1000"
+  [title]="titleLine"
+  [graphics]="graphicsLine"
+></app-line-chart>
+<app-candlestick-chart
+  [size]="1000"
+  [title]="titleCandlestick"
+  [graphic]="graphicCandlestick"
+></app-candlestick-chart>

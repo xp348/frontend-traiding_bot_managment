@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from '@angular/core';
 import { LineChartComponent } from '../../shared/components/line-chart/line-chart.component';
 import { CandlestickChartComponent } from '../../shared/components/candlestick-chart/candlestick-chart.component';
 
@@ -11,6 +15,8 @@ import { CandlestickChartComponent } from '../../shared/components/candlestick-c
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextPlotlyComponent {
+  constructor(private changeDetection: ChangeDetectorRef) {}
+
   titleLine: string = 'sss';
   graphicsLine = [
     undefined,
@@ -184,8 +190,11 @@ export class TextPlotlyComponent {
   ];
   ngOnInit() {
     setTimeout(() => {
-      this.graphicsLine = [];
+      this.titleLine = '1111';
+      this.titleCandlestick = '111';
+
       console.log('ddd');
+      this.changeDetection.detectChanges();
     }, 3000);
   }
 }

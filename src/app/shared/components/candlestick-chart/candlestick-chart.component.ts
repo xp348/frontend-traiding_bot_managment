@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  SimpleChanges,
 } from '@angular/core';
 declare const Plotly: any;
 interface Graphic {
@@ -51,17 +52,41 @@ export class CandlestickChartComponent {
     },
   } as const;
 
+  config = {
+    displaylogo: false,
+    displayModeBar: false,
+    displayPanel: true,
+    modeBarButtons: [
+      ['toImage'],
+      ['zoomIn2d'],
+      ['zoomOut2d'],
+      ['resetScale2d'],
+    ],
+  } as const;
+
   //////////////////////////////////////////////////////////////
-  constructor(private changeDetection: ChangeDetectorRef) {}
+
   @Input() key: string = '';
   @Input() title: string = '';
   @Input() graphic: Graphic[] = [];
   @Input() size: number = 1000;
+  ngOnChanges(changes: SimpleChanges) {
+    if (
+      (changes['graphics'] && changes['graphics'].currentValue) ||
+      (changes['title'] && changes['title'].currentValue) ||
+      (changes['size'] && changes['size'].currentValue) ||
+      (changes['key'] && changes['key'].currentValue)
+    )
+      this.creatingGraph();
+  }
   ngAfterViewInit(): void {
+    this.creatingGraph();
+  }
+
+  creatingGraph() {
     let TESTER = document.getElementById('candlestickChart_' + this.key);
     TESTER &&
       Plotly.newPlot(TESTER, ...this.settingGraphics(this.graphic, this.title));
-    this.changeDetection.detectChanges();
   }
 
   settingGraphics(graphics: Graphic[], title: string) {
@@ -101,13 +126,9 @@ export class CandlestickChartComponent {
 
     var data = [trace];
 
-    let layout = {
-      ...this.layoutSetting,
-      title: {
-        text: title,
-      },
-    };
+    let layout: any = this.layoutSetting;
+    layout.title.text = title;
 
-    return [data, layout];
+    return [data, layout, this.config];
   }
 }

@@ -22,7 +22,7 @@ type GraphicsType = (Graphic | undefined)[];
   styleUrl: './line-chart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LineChartComponent implements AfterViewInit {
+export class LineChartComponent {
   titleSetting = {
     x: 0.05, // Задаем отступ слева (относительно графика)
     // y: 0.95, // Задаем отступ сверху (относительно графика)
@@ -108,25 +108,56 @@ export class LineChartComponent implements AfterViewInit {
     // ],
   } as const;
 
+  BarButtonsList = [] as const;
+
+  config = {
+    showlegend: false,
+    // showLink: true,
+    // plotlyServerURL: 'https://chart-studio.plotly.com',
+    // modeBarButtonsToRemove: ['toImage'], // Удаление кнопки конвертации графика в изображение
+    // modeBarButtonsToAdd: [
+    //   {
+    //     name: 'Custom Button',
+    //     icon: Plotly.Icons.home, // Иконка для новой кнопки
+    //     click: function () {
+    //       // Обработчик события нажатия на новую кнопку
+    //       alert('Custom button clicked');
+    //     },
+    //   },
+    // ],
+    displaylogo: false, // Удаление логотипа Plotly
+    displayModeBar: false, // Показать панель инструментов
+    displayPanel: true, // Показать панель управления
+    modeBarButtons: this.BarButtonsList.map((i) => [i]), // Настройка расположения кнопок
+  } as const;
+
   color = ['#b3f5f5', '#00d9d9', '#004f4f', '#ffb787', '#ffb4ab'] as const;
   //////////////////////////////////////////////////////////////
-  constructor(private changeDetection: ChangeDetectorRef) {}
+
   @Input() key: string = '';
   @Input() title: string = '';
   @Input() graphics: GraphicsType = [];
   @Input() size: number = 0;
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['graphics'] && changes['graphics'].currentValue)
-      console.log('OnChanges', changes);
+    if (
+      (changes['graphics'] && changes['graphics'].currentValue) ||
+      (changes['title'] && changes['title'].currentValue) ||
+      (changes['size'] && changes['size'].currentValue) ||
+      (changes['key'] && changes['key'].currentValue)
+    )
+      this.creatingGraph();
   }
   ngAfterViewInit(): void {
+    this.creatingGraph();
+  }
+
+  creatingGraph() {
     let linechart = document.getElementById('lineChart_' + this.key);
     linechart &&
       Plotly.newPlot(
         linechart,
         ...this.settingGraphics(this.graphics, this.title)
       );
-    this.changeDetection.detectChanges();
   }
 
   settingGraphics(graphics: GraphicsType, title: string) {
@@ -137,18 +168,9 @@ export class LineChartComponent implements AfterViewInit {
       },
     }));
 
-    let layout = {
-      ...this.layoutSetting,
-      title: {
-        text: title,
-      },
-    };
+    let layout: any = this.layoutSetting;
+    layout.title.text = title;
 
-    let config = {
-      showlegend: false,
-      // showLink: true,
-      // plotlyServerURL: 'https://chart-studio.plotly.com',
-    };
-    return [data, layout, config];
+    return [data, layout, this.config];
   }
 }

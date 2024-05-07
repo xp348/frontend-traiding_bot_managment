@@ -1,14 +1,12 @@
-<!-- <p>side-menu works!</p>
+@for (item of listOfTitles;track item; let i = $index, e = $even) {
 
-<img
-  class="w-[24px]"
-  [src]="'favicon.ico' | rmMapper : iconPathMapper"
-  alt="favicon"
-/> -->
-<button routerLink="/TextNgRxComponent" routerLinkActive="link_active">
-  TextNgRxComponent
-</button>
-<button routerLink="/TextPlotlyComponent" routerLinkActive="link_active">
+<button
+  [ngClass]="{ link_active: i == selectedIndex }"
+  (click)="newSelectedIndex.emit(i)"
+>
+  {{ item }}</button
+>}
+<!-- <button routerLink="/TextPlotlyComponent" routerLinkActive="link_active">
   TextPlotlyComponent
 </button>
 <button routerLink="/TextTailwindComponent" routerLinkActive="link_active">
@@ -19,4 +17,4 @@
   routerLinkActive="link_active"
 >
   TextAngularMaterialComponent
-</button>
+</button> -->

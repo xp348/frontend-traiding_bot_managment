@@ -1,6 +1,27 @@
 :host {
+  display: flex;
   width: 100%;
   height: 56px;
   padding: 8px 16px;
   @apply bg-[#004f4f];
+}
+
+button {
+  // width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 100px;
+  color: #5effff;
+  // text-align: left;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // overflow: hidden;
+  &:hover {
+    background-color: #00dddd26;
+  }
+}
+
+.link_active {
+  color: #5effff;
+  background-color: #00dddd26;
 }

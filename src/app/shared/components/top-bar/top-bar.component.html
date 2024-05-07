@@ -1,1 +1,27 @@
-<p>top-bar works!</p>
+<div class="h-min">
+  <img
+    class="h-[40px]"
+    [src]="'favicon.ico' | rmMapper : iconPathMapper"
+    alt="favicon"
+  />
+</div>
+<button routerLink="/bots-page" routerLinkActive="link_active">Боты</button>
+<button routerLink="/forecasts-page" routerLinkActive="link_active">
+  Прогнозы
+</button>
+<button routerLink="/assets-page" routerLinkActive="link_active">Aктивы</button>
+<button routerLink="/TextNgRxComponent" routerLinkActive="link_active">
+  TextNgRxComponent
+</button>
+<button routerLink="/TextPlotlyComponent" routerLinkActive="link_active">
+  TextPlotlyComponent
+</button>
+<button routerLink="/TextTailwindComponent" routerLinkActive="link_active">
+  TextTailwindComponent
+</button>
+<button
+  routerLink="/TextAngularMaterialComponent"
+  routerLinkActive="link_active"
+>
+  TextAngularMaterialComponent
+</button>

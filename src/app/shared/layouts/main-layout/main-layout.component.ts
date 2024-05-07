@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SideMenuComponent } from '../side-menu/side-menu.component';
-import { TopBarComponent } from '../top-bar/top-bar.component';
+
 import { RouterOutlet } from '@angular/router';
+import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
+import { TopBarComponent } from '../../components/top-bar/top-bar.component';
 
 @Component({
-  selector: 'app-main-layou',
+  selector: 'app-main-layout',
   standalone: true,
-  templateUrl: './main-layou.component.html',
-  styleUrl: './main-layou.component.scss',
+  templateUrl: './main-layout.component.html',
+  styleUrl: './main-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [SideMenuComponent, TopBarComponent, RouterOutlet],
 })

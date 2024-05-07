@@ -6,7 +6,10 @@ import { TextAngularMaterialComponent } from './features/text-angular-material/t
 import { AuthComponent } from './features/auth/auth.component';
 import { NoAuthGuard } from './core/guards/no-auth.guard';
 import { AuthGuard } from './core/guards/auth.guard';
-import { MainLayouComponent } from './shared/components/main-layou/main-layou.component';
+import { MainLayouComponent } from './shared/layouts/main-layout/main-layout.component';
+import { BotsPageComponent } from './features/bots-page/bots-page.component';
+import { AssetsPageComponent } from './features/assets-page/assets-page.component';
+import { ForecastsPageComponent } from './features/forecasts-page/forecasts-page.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +28,18 @@ export const routes: Routes = [
     // canActivate: [AuthGuard],
     component: MainLayouComponent,
     children: [
+      {
+        path: 'bots-page',
+        component: BotsPageComponent,
+      },
+      {
+        path: 'forecasts-page',
+        component: ForecastsPageComponent,
+      },
+      {
+        path: 'assets-page',
+        component: AssetsPageComponent,
+      },
       {
         path: 'TextNgRxComponent',
         component: TextNgRxComponent,

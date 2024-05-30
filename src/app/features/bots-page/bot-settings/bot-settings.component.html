@@ -4,7 +4,7 @@
     [columns]="2"
     [title]="'Параметры обучения'"
   >
-    <mat-form-field class="w-[268px]">
+    <mat-form-field appearance="outline" class="w-[268px]">
       <mat-label>Выберите актив</mat-label>
       <mat-select formControlName="treningAsset">
         @for (item of assets; track item) {
@@ -13,7 +13,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="w-[268px]">
+    <mat-form-field appearance="outline" class="w-[268px]">
       <mat-label>Выберите потерю</mat-label>
       <mat-select formControlName="loss">
         @for (item of losses; track item) {
@@ -21,7 +21,7 @@
         }
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="w-[268px]">
+    <mat-form-field appearance="outline" class="w-[268px]">
       <mat-label>Выберите оптимизатор </mat-label>
       <mat-select formControlName="optimizer">
         @for (item of optimizers; track item) {
@@ -30,17 +30,17 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="w-[268px]">
+    <mat-form-field appearance="outline" class="w-[268px]">
       <mat-label>Длина последовательности</mat-label>
       <input matInput placeholder="Число" formControlName="sequenceLength" />
     </mat-form-field>
 
-    <mat-form-field class="w-[268px]">
+    <mat-form-field appearance="outline" class="w-[268px]">
       <mat-label>Количество эпох</mat-label>
       <input matInput placeholder="Число" formControlName="numberEpochs" />
     </mat-form-field>
 
-    <mat-form-field class="w-[268px]">
+    <mat-form-field appearance="outline" class="w-[268px]">
       <mat-label>Размер партии</mat-label>
       <input matInput placeholder="Число" formControlName="batchSize" />
     </mat-form-field>
@@ -60,7 +60,7 @@
     [columns]="2"
     [title]="'Параметры тестирования'"
   >
-    <mat-form-field class="w-[268px]">
+    <mat-form-field appearance="outline" class="w-[268px]">
       <mat-label>Выберите вариант</mat-label>
       <mat-select formControlName="testingAsset">
         @for (item of assets; track item) {
@@ -81,7 +81,7 @@
     <mat-step>
       <ng-template matStepLabel>{{ item.type.value }}</ng-template>
       <div class="grid grid-cols-3 gap-5">
-        <mat-form-field class="w-[268px]">
+        <mat-form-field appearance="outline" class="w-[268px]">
           <mat-label>Выберите тип</mat-label>
           <mat-select [formControl]="item.type">
             @for (item of types; track item) {
@@ -90,6 +90,7 @@
           </mat-select>
         </mat-form-field>
         @if (['lstm', 'dense'].includes(item.type.value||'') ) {<mat-form-field
+          appearance="outline"
           class="w-[268px]"
         >
           <mat-label>Количество нейронов</mat-label>
@@ -98,14 +99,20 @@
             placeholder="Число"
             [formControl]="item.neurons!!"
           /> </mat-form-field
-        >} @if (item.type.value=='lstm' ) {<mat-form-field class="w-[268px]">
+        >} @if (item.type.value=='lstm' ) {<mat-form-field
+          appearance="outline"
+          class="w-[268px]"
+        >
           <mat-label>Временные шаги</mat-label>
           <input
             matInput
             placeholder="Число"
             [(ngModel)]="item.input_timesteps"
           /> </mat-form-field
-        >} @if (item.type.value=='lstm' ) {<mat-form-field class="w-[268px]">
+        >} @if (item.type.value=='lstm' ) {<mat-form-field
+          appearance="outline"
+          class="w-[268px]"
+        >
           <mat-label>Входной тусклый</mat-label>
           <input
             matInput
@@ -115,7 +122,10 @@
         >}@if (item.type.value=='lstm' ) {
         <mat-checkbox class="my-auto" [(ngModel)]="item.return_seq"
           >Возврат последовательности</mat-checkbox
-        >} @if (item.type.value=='dropout' ) {<mat-form-field class="w-[268px]">
+        >} @if (item.type.value=='dropout' ) {<mat-form-field
+          appearance="outline"
+          class="w-[268px]"
+        >
           <mat-label>Ставка</mat-label>
           <input
             matInput
@@ -123,7 +133,7 @@
             [formControl]="item.rate!!"
           /> </mat-form-field
         >} @if (item.type.value=='dense' ) {
-        <mat-form-field class="w-[268px]">
+        <mat-form-field appearance="outline" class="w-[268px]">
           <mat-label
             >Выберите функцию <br />
             активации</mat-label
@@ -140,3 +150,5 @@
     }
   </mat-stepper>
 </app-content-block>
+
+<button (click)="Bot2Post()">d</button>

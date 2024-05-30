@@ -72,15 +72,18 @@ export class CandlestickChartComponent {
   @Input() size: number = 1000;
   ngOnChanges(changes: SimpleChanges) {
     if (
-      (changes['graphics'] && changes['graphics'].currentValue) ||
+      (changes['graphic'] && changes['graphic'].currentValue) ||
       (changes['title'] && changes['title'].currentValue) ||
       (changes['size'] && changes['size'].currentValue) ||
       (changes['key'] && changes['key'].currentValue)
-    )
+    ) {
       this.creatingGraph();
+      console.log('candlestick-chart ngOnChanges');
+    }
   }
   ngAfterViewInit(): void {
     this.creatingGraph();
+    console.log('candlestick-chart ngAfterViewInit');
   }
 
   creatingGraph() {

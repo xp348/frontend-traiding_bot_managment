@@ -2,14 +2,15 @@
 
 <mat-tab-group mat-stretch-tabs="false" class="flex-grow px-[50px] py-[20px]">
   <mat-tab label="Параметры">
-    <app-bot-settings></app-bot-settings>
+    <app-bot-settings (statistics)="statistics = $event"></app-bot-settings>
   </mat-tab>
   <mat-tab label="Статистика">
-    график обучение/прогноз/история от времени
+    <app-bot-statistics [statistics]="statistics"></app-bot-statistics>
+    <!-- график обучение/прогноз/история от времени
     <br />
     график транзакций от времени
     <br />
-    график выделенного капитал от времени
+    график выделенного капитал от времени -->
   </mat-tab>
 </mat-tab-group>
 

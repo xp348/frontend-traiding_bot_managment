@@ -144,11 +144,14 @@ export class LineChartComponent {
       (changes['title'] && changes['title'].currentValue) ||
       (changes['size'] && changes['size'].currentValue) ||
       (changes['key'] && changes['key'].currentValue)
-    )
+    ) {
       this.creatingGraph();
+      console.log('line-chart ngOnChanges');
+    }
   }
   ngAfterViewInit(): void {
     this.creatingGraph();
+    console.log('line-chart ngAfterViewInit');
   }
 
   creatingGraph() {

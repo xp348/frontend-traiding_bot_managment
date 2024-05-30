@@ -1,0 +1,27 @@
+<app-line-chart
+  [key]="'2212222'"
+  [size]="1000"
+  [title]="'Средняя абсолютная ошибка на наборе'"
+  [graphics]="graphicsLine"
+></app-line-chart>
+
+<app-line-chart
+  [key]="'22222'"
+  [size]="1000"
+  [title]="'Прогноз'"
+  [graphics]="graphicsLine2"
+></app-line-chart>
+
+<app-candlestick-chart
+  [key]="'1221'"
+  [size]="1000"
+  [title]="'Тестовая выборка'"
+  [graphic]="graphicCandlestickTest || []"
+></app-candlestick-chart>
+
+<app-candlestick-chart
+  [key]="'5555'"
+  [size]="1000"
+  [title]="'Тренировочная выборка'"
+  [graphic]="graphicCandlestickTrain || []"
+></app-candlestick-chart>

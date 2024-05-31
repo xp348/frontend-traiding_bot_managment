@@ -146,10 +146,10 @@ export class BotSettingsComponent {
       },
       [Validators.required]
     ),
-    sequenceLength: new FormControl<number | null>(50, [Validators.required]),
+    sequenceLength: new FormControl<number | null>(45, [Validators.required]),
     normalise: new FormControl<boolean>(false, [Validators.required]),
-    numberEpochs: new FormControl<number | null>(2, [Validators.required]),
-    batchSize: new FormControl<number | null>(32, [Validators.required]),
+    numberEpochs: new FormControl<number | null>(10, [Validators.required]),
+    batchSize: new FormControl<number | null>(20, [Validators.required]),
     loss: new FormControl<string | null>('mse', [Validators.required]),
     optimizer: new FormControl<string | null>('adam', [Validators.required]),
   });

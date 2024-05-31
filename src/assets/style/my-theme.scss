@@ -1179,10 +1179,15 @@ $theme: mat.define-light-theme(
   --mat-tree-node-min-height: 48px;
 }
 
-.mat-mdc-tab-group {
-  --mat-tab-header-inactive-label-text-color: #e0e3e2;
-  --mat-tab-header-inactive-hover-label-text-color: #e0e3e2;
-}
+// .mat-mdc-tab-group {
+//   --mat-tab-header-inactive-label-text-color: #e0e3e2;
+//   --mat-tab-header-inactive-hover-label-text-color: #e0e3e2;
+// }
 .mdc-label {
   color: #e0e3e2;
+  border-width: 0px;
+  border-color: #000000;
+}
+.mdc-notched-outline__notch {
+  border-color: #000000;
 }

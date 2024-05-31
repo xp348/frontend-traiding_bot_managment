@@ -80,7 +80,7 @@
     @for (item of layers; track item) {
     <mat-step>
       <ng-template matStepLabel>{{ item.type.value }}</ng-template>
-      <div class="grid grid-cols-3 gap-5">
+      <div class="grid grid-cols-3 gap-5 p-5">
         <mat-form-field appearance="outline" class="w-[268px]">
           <mat-label>Выберите тип</mat-label>
           <mat-select [formControl]="item.type">
@@ -151,4 +151,4 @@
   </mat-stepper>
 </app-content-block>
 
-<button (click)="Bot2Post()">d</button>
+<button class="w-30" mat-flat-button (click)="Bot2Post()">Готово</button>
